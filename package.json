@@ -1,0 +1,17 @@
+{
+  "name": "toypad-scratch",
+  "version": "0.0.1",
+  "description": "Lego Dimensions toypad interaction with Scratch API",
+  "main": "src/app.js",
+  "author": "Jonathan Foote <jf@jonathanfoote.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonyo/toypad-scratch.git"
+  },
+  "dependencies": {
+    "@jonyo/toypad": "^1.0.2",
+    "debug": "^3.1.0",
+    "ws": "^6.0.0"
+  }
+}
