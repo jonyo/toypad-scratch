@@ -6,6 +6,18 @@ let wss = new WebSocket.Server({ port: 8080 }),
 	toypad = new Toypad(),
 	socket = null;
 
+
+/**
+ * Initialize the minifigs here...  Note that any to be interacted with must also be defined in scratch_ext.js
+ */
+Toypad.Minifig.add(new Toypad.Minifig('STEVE', '65 9e 22 4c 58 80'));
+Toypad.Minifig.add(new Toypad.Minifig('MINECART', '58 a9 62 58 58 80'));
+Toypad.Minifig.add(new Toypad.Minifig('IRONMAN', '5a a9 62 58 58 80'));
+// Oops... lost the nfc tag for now...
+//Toypad.Minifig.add(new Toypad.Minifig('IRONCAR', ''));
+Toypad.Minifig.add(new Toypad.Minifig('WENDY', '7a 9e 22 4c 58 80'));
+Toypad.Minifig.add(new Toypad.Minifig('WENDYCAR', '42 a9 62 58 58 80'));
+
 toypad.connect();
 
 toypad.on('connected', function() {
@@ -44,10 +56,12 @@ wss.on('connection', function connection(ws) {
 			case 'panelChange':
 				var panel = Toypad.panels[data.panel] || null;
 				if (!panel) {
+					debug('Invalid panel: %s', data.panel);
 					return;
 				}
 				var color = Toypad.colors[data.color] || null;
 				if (color === null) {
+					debug('Invalid color %s', data.color);
 					return;
 				}
 				toypad.panelChange(panel, color);
@@ -56,16 +70,20 @@ wss.on('connection', function connection(ws) {
 			case 'panelFade':
 				var panel = Toypad.panels[data.panel] || null;
 				if (!panel) {
+					debug('Invalid panel: %s', data.panel);
 					return;
 				}
 				var color = Toypad.colors[data.color] || null;
 				if (color === null) {
+					debug('Invalid color %s', data.color);
 					return;
 				}
 				if (typeof data.secondsPerChange === 'undefined') {
+					debug('secondsPerChange required');
 					return;
 				}
 				if (typeof data.changeCount === 'undefined') {
+					debug('changeCount required');
 					return;
 				}
 				toypad.panelFade(panel, color, parseFloat(data.secondsPerChange), parseInt(data.changeCount));
@@ -74,19 +92,24 @@ wss.on('connection', function connection(ws) {
 			case 'panelFlash':
 				var panel = Toypad.panels[data.panel] || null;
 				if (!panel) {
+					debug('Invalid panel: %s', data.panel);
 					return;
 				}
 				var color = Toypad.colors[data.color] || null;
 				if (color === null) {
+					debug('Invalid color %s', data.color);
 					return;
 				}
 				if (typeof data.onSecondsPerChange === 'undefined') {
+					debug('onSecondsPerChange required');
 					return;
 				}
 				if (typeof data.offSecondsPerChange === 'undefined') {
+					debug('offSecondsPerChange required');
 					return;
 				}
 				if (typeof data.changeCount === 'undefined') {
+					debug('changeCount required');
 					return;
 				}
 				toypad.panelFlash(
