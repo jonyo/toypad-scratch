@@ -68,7 +68,7 @@ wss.on('connection', function connection(ws) {
 				if (typeof data.changeCount === 'undefined') {
 					return;
 				}
-				toypad.panelFade(panel, color, parseFload(data.secondsPerChange), parseInt(data.changeCount));
+				toypad.panelFade(panel, color, parseFloat(data.secondsPerChange), parseInt(data.changeCount));
 				break;
 
 			case 'panelFlash':
