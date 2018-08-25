@@ -141,12 +141,11 @@
 	}.bind(ext);
 
 	ext.panelFlash = function(panel, color, changeCount, onSecondsPerChange, offSecondsPerChange) {
-		console.log('panelPulse');
+		console.log('panelFlash');
 		if (!connected) {
 			console.log('Not connected to toypad!');
 			return;
 		}
-		console.log(panel, color, secondsPerChange);
 		msg = {
 			command: 'panelFlash',
 			panel: panel,
