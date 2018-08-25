@@ -182,10 +182,10 @@
 			['w', 'Connect to the toypad.', 'cnct'],
 			[' ', 'Change %m.panel color to %m.color', 'panelChange', 'ALL', 'WHITE'],
 			[' ', 'Fade %m.panel to %m.color in %n seconds', 'panelFade', 'ALL', 'WHITE', 1],
-			[' ', 'Pulse %m.panel to %m.color, changing colors %n times, %n seconds each pulse', 'panelPulse', 'ALL', 'BLUE', 6, 1],
+			[' ', 'Pulse %m.panel to %m.color changing colors %n times, %n seconds each pulse', 'panelPulse', 'ALL', 'BLUE', 6, 1],
 			[
 				' ',
-				'Flash %m.panel to %m.color, changing colors %n times, %n seconds for new color, %n for old color',
+				'Flash %m.panel to %m.color changing colors %n times, %n seconds for new color, %n for old color',
 				'panelFlash',
 				'ALL',
 				'BLUE',
